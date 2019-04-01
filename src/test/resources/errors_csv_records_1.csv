@@ -1,0 +1,5 @@
+Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error
+112806,NL27SNSB0917829871,Clothes for Willem Dekker,91.23,15.57,106.8,Duplicate transaction reference exists
+112806,NL69ABNA0433647324,Clothes for Richard de Vries,90.83,-10.91,79.92,Duplicate transaction reference exists
+112806,NL93ABNA0585619023,Tickets from Richard Bakker,102.12,45.87,147.99,Duplicate transaction reference exists
+195447,NL74ABNA0248990274,Flowers for Willem Dekker,25.32,48.98,75.3,End balance doesn't match with start balance + mutation

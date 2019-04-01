@@ -1,0 +1,14 @@
+spring:
+  main.banner-mode: 'off'
+  profiles.active: local-sandbox
+---
+spring:
+  profiles: local-sandbox
+config:
+  pollingInterval: 5000
+  inputCoolingOffPeriod: 5000
+  inputFolderPath: xyzbank/input
+  errorFolderPath: xyzbank/error
+  processedFolderPath: xyzbank/processed
+  auditFolderPath: xyzbank/audit
+---

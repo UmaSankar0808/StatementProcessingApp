@@ -1,0 +1,3 @@
+Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error
+167875,NL93ABNA0585619023,Tickets from Erik de Vries,5429,-939,6368,End balance doesn't match with start balance + mutation
+165102,NL93ABNA0585619023,Tickets for Rik Theuß,3980,1000,4981,End balance doesn't match with start balance + mutation
