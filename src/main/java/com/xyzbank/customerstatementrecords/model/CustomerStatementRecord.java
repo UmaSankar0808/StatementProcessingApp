@@ -1,16 +1,13 @@
 package com.xyzbank.customerstatementrecords.model;
 
 import java.math.BigDecimal;
-
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-
 import com.opencsv.bean.CsvBindByPosition;
-
 import lombok.Getter;
 import lombok.Setter;
 

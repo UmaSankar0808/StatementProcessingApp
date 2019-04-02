@@ -19,19 +19,21 @@ import org.junit.jupiter.api.Test;
 import com.xyzbank.customerstatementrecords.configuration.ApplicationConfig;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecord;
 import com.xyzbank.customerstatementrecords.service.CustomerStatementService;
+import com.xyzbank.customerstatementrecords.transformation.InputFieldsValidationService;
 import com.xyzbank.customerstatementrecords.transformation.TransformToCustomerStatementRecord;
 
 class CustomerStatementServiceTest {
 	
 	private CustomerStatementService customerStatementService;
 	private TransformToCustomerStatementRecord transformer = mock(TransformToCustomerStatementRecord.class);
+	private InputFieldsValidationService fieldValidationService = mock(InputFieldsValidationService.class);
 
 	@BeforeEach
 	void setUp() throws Exception {
 		Files.createDirectories(Paths.get("test/xyzbank/error"));
 		ApplicationConfig config = new ApplicationConfig();
 		config.setErrorFolderPath("test/xyzbank/error");
-		customerStatementService = new CustomerStatementService(config, transformer);
+		customerStatementService = new CustomerStatementService(config, fieldValidationService, transformer);
 	}
 
 	@Test

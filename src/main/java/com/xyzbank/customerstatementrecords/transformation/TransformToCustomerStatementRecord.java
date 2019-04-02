@@ -2,26 +2,20 @@ package com.xyzbank.customerstatementrecords.transformation;
 
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_CSV;
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_XML;
-
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
 import org.springframework.stereotype.Component;
-
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.enums.CSVReaderNullFieldIndicator;
 import com.xyzbank.customerstatementrecords.exception.FileProcessingException;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecord;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecords;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,11 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class TransformToCustomerStatementRecord {
 
-	private static Unmarshaller unmarshaller;
+	private static JAXBContext jaxbInstance;
 
 	static {
 		try {
-            unmarshaller = JAXBContext.newInstance(CustomerStatementRecords.class).createUnmarshaller();
+			jaxbInstance = JAXBContext.newInstance(CustomerStatementRecords.class);
 		} catch (JAXBException exp) {
 			log.error(exp.getMessage(), exp);
 		}
@@ -52,6 +46,7 @@ public class TransformToCustomerStatementRecord {
 		}
 	}
 
+	//Convert the CSV file into CustomerStatementRecord objects
 	public List<CustomerStatementRecord> tranformCsvToCustomerStatementRecord(final Path path) {
 		log.info("Transforming file {} to CustomerStatementRecords java pojo", path);
 		String fileContents;
@@ -69,10 +64,12 @@ public class TransformToCustomerStatementRecord {
 					.withType(CustomerStatementRecord.class).build().parse();
 	}
 
+	//Unmarshall the XML file and return the CustomerStatementRecord objects.
 	public List<CustomerStatementRecord> tranformXmlToCustomerStatementRecord(final Path path) {
 		try {
 			log.info("Transforming file {} to CustomerStatementRecords java pojo", path);
-			return ((CustomerStatementRecords) unmarshaller.unmarshal(path.toFile())).getRecord();
+			return ((CustomerStatementRecords) jaxbInstance.createUnmarshaller()
+					.unmarshal(path.toFile())).getRecord();
 		} catch (JAXBException exp) {
 			log.error(exp.getMessage(), exp);
 			throw new FileProcessingException(exp.getMessage());

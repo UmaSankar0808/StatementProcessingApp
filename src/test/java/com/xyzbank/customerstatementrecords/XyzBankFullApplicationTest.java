@@ -1,15 +1,13 @@
 package com.xyzbank.customerstatementrecords;
 
-import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -55,7 +53,7 @@ public class XyzBankFullApplicationTest {
         //Verify error folder contents
         assertEquals(new String(Files.readAllBytes(Paths.get("src/test/resources/").resolve("errors_csv_records_1.csv"))),
         		new String(Files.readAllBytes(errorPath.resolve("records_1.csv"))));
-        //Verify aufit folder contents
+        //Verify audit folder contents
         assertEquals(new String(inputFileBytes), new String(Files.readAllBytes(auditPath.resolve("records_1.csv"))));
         //Verify processed folder contents
         assertEquals(new String(Files.readAllBytes(Paths.get("src/test/resources/").resolve("processed_csv_records_1.csv"))),
@@ -71,12 +69,14 @@ public class XyzBankFullApplicationTest {
         Files.write(inputPath.resolve("records_2.xml"), inputFileBytes);
         TimeUnit.SECONDS.sleep(11);
         //Verify error folder contents
-        assertEquals(new String(Files.readAllBytes(Paths.get("src/test/resources/").resolve("errors_xml_records_2.csv"))),
+        assertEquals(new String(Files.readAllBytes(
+        		Paths.get("src/test/resources/").resolve("errors_xml_records_2.csv")), StandardCharsets.UTF_8),
         		new String(Files.readAllBytes(errorPath.resolve("records_2.csv"))));
-        //Verify aufit folder contents
+        //Verify audit folder contents
         assertEquals(new String(inputFileBytes), new String(Files.readAllBytes(auditPath.resolve("records_2.xml"))));
         //Verify processed folder contents
-        assertEquals(new String(Files.readAllBytes(Paths.get("src/test/resources/").resolve("processed_xml_records_2.csv"))),
+        assertEquals(new String(Files.readAllBytes(
+        		Paths.get("src/test/resources/").resolve("processed_xml_records_2.csv")), StandardCharsets.UTF_8),
         		new String(Files.readAllBytes(processedPath.resolve("records_2.csv"))));
         //Verify input folder shouldn't contain xml file.
         assertFalse(inputPath.resolve("records_1.xml").toFile().exists());

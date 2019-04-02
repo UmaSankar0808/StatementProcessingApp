@@ -1,14 +1,40 @@
 spring:
   main.banner-mode: 'off'
   profiles.active: local-sandbox
+logging.level.org: INFO
 ---
 spring:
   profiles: local-sandbox
 config:
   pollingInterval: 5000
-  inputCoolingOffPeriod: 5000
   inputFolderPath: xyzbank/input
   errorFolderPath: xyzbank/error
   processedFolderPath: xyzbank/processed
   auditFolderPath: xyzbank/audit
 ---
+spring:
+  profiles: dev
+config:
+  pollingInterval: 5000
+  inputFolderPath: xyzbank/input
+  errorFolderPath: xyzbank/error
+  processedFolderPath: xyzbank/processed
+  auditFolderPath: xyzbank/audit
+---
+spring:
+  profiles: stg
+config:
+  pollingInterval: 5000
+  inputFolderPath: xyzbank/input
+  errorFolderPath: xyzbank/error
+  processedFolderPath: xyzbank/processed
+  auditFolderPath: xyzbank/audit
+---
+spring:
+  profiles: prod
+config:
+  pollingInterval: 5000
+  inputFolderPath: xyzbank/input
+  errorFolderPath: xyzbank/error
+  processedFolderPath: xyzbank/processed
+  auditFolderPath: xyzbank/audit 

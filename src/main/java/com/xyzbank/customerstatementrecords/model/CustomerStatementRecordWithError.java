@@ -1,11 +1,8 @@
 package com.xyzbank.customerstatementrecords.model;
 
 import java.lang.reflect.InvocationTargetException;
-
 import org.apache.commons.beanutils.BeanUtils;
-
 import com.opencsv.bean.CsvBindByPosition;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

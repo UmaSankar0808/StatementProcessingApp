@@ -14,9 +14,9 @@ import com.xyzbank.customerstatementrecords.exception.FileProcessingException;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecord;
 
 class TransformToCustomerStatementRecordTest {
-	
-	TransformToCustomerStatementRecord transform = new TransformToCustomerStatementRecord();
-	
+
+	private TransformToCustomerStatementRecord transform = new TransformToCustomerStatementRecord();
+
 	@Test
 	void testTranformInputFileToCustomerStatementRecordWithXml() {
 		Path filePath = Paths.get("src/test/resources/").resolve("records_2.xml");
@@ -30,21 +30,21 @@ class TransformToCustomerStatementRecordTest {
 		List<CustomerStatementRecord> records = transform.tranformInputFileToCustomerStatementRecord(filePath);
 		assertEquals(11, records.size());
 	}
-	
+
 	@Test
 	void shouldThrowExceptionForInvalidXmlFile() {
 		Path filePath = Paths.get("src/test/resources/").resolve("records_invalid.xml");
 		assertThrows(FileProcessingException.class,
 				() -> transform.tranformInputFileToCustomerStatementRecord(filePath));
 	}
-	
+
 	@Test
 	void shouldThrowExceptionIfInputFileNotFound() {
 		Path filePath = Paths.get("src/test/resources/").resolve("records_file_missing.csv");
 		assertThrows(FileProcessingException.class,
 				() -> transform.tranformInputFileToCustomerStatementRecord(filePath));
 	}
-	
+
 	@Test
 	void shouldReturnAnEmptyListOfRecordsForInvalidFileExtension() {
 		Path filePath = Paths.get("src/test/resources/").resolve("records_one.png");

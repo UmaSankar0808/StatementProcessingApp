@@ -33,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
 
+	//Gives the time stamp of the file
 	public static String extractFileIdentifier(final Path path) {
 		String fileName = path.getFileName().toString();
 		if (!fileName.startsWith(RABOBANK_FILE_PREFIX)) {
@@ -42,6 +43,7 @@ public final class FileUtil {
 			fileName.length() - FILE_EXTENSION_LENGTH);
 	}
 
+	//Returns list of files in the input folder
 	public static List<Path> listStatementRecordFiles(final String inputFolder) {
 		try (Stream<Path> files = Files.list(Paths.get(inputFolder))) {
 			return files.filter(path -> path.toFile().isFile())
@@ -56,10 +58,11 @@ public final class FileUtil {
 		return new ArrayList<>();
 	}
 
+	// Writes file to the respective folders
 	public static void writeRecordsToFile(final List<CustomerStatementRecord> records,
 			final String folderPath, final String fileName, final boolean errorRecords) {
 		if (records != null && !records.isEmpty()) {
-			final File outputFile = new File(folderPath + File.separator + fileName + EXTENSION_CSV);
+            final File outputFile = new File(folderPath + File.separator + fileName + EXTENSION_CSV);
 			log.info("Writing error records {}", errorRecords);
 			log.info("Writing contents to file {}", outputFile);
 			try {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE" value="/data/logs/xyzbank/application.log"/>
+	    <root level="INFO">
+	    	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">		       	        
+		        <encoder>
+                	<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - correlationId: %X{correlationId} %msg %n</pattern>
+                </encoder>
+		    </appender>
+	    </root>
+</configuration>

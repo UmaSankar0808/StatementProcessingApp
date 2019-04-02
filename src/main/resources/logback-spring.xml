@@ -12,7 +12,7 @@
 	    </root>
     </springProfile>
 
-	<springProfile name="dev, staging, production">
+	<springProfile name="dev, stg, prod">
 		<root level="INFO">
 			<appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
 				<queueSize>500</queueSize>

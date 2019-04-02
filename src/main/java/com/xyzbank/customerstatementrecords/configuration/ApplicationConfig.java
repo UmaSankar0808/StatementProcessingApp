@@ -18,5 +18,5 @@ public class ApplicationConfig {
 	private String errorFolderPath;
 	private String processedFolderPath;
 	private String auditFolderPath;
-
+	private Long prugeFilesPeriodInMillis;
 }
