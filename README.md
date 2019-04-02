@@ -1,4 +1,4 @@
-##Important Note:
+## Important Note:
 
 To run this project in eclipse lombok.jar needs to be added in eclipse.ini file `-javaagent:lombok.jar`
 
@@ -51,7 +51,10 @@ For running tests this project uses maven defaults
 mvn clean compile jxr:jxr checkstyle:checkstyle
 ```
 
-## Run XyzBankFullApplicationTest
+## Run all unit tests
 ```
-mvn -Dtest=XyzBankFullApplicationTest clean test
+mvn clean test
 ```
+
+## Sonarqube report
+![alt text](https://github.com/UmaSankar0808/StatementProcessingApp/blob/master/Sonar_reprot.jpg)
