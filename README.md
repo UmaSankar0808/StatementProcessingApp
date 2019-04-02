@@ -11,7 +11,9 @@ To run this project in eclipse lombok.jar needs to be added in eclipse.ini file 
 * Lombok
 * hibernate-validator (Java Bean Validation)
 * Slf4j+Logback (Logging)
-* Maven (Build Tool).
+* Maven (Build Tool)
+* Checkstyle & Sonarqube (Static code analysis)
+* Jacoco (Code coverage)
 
 ## Setup:
 
