@@ -72,7 +72,7 @@ public class TransformToCustomerStatementRecord {
 	/**
 	 * Unmarshall the XML file and return the CustomerStatementRecord objects.
 	 *
-	 * @param paAbsolute path of the fileth
+	 * @param Absolute path of the file
 	 * @return CustomerStatementRecord objects
 	 */
 	public List<CustomerStatementRecord> tranformXmlToCustomerStatementRecord(final Path path) {
