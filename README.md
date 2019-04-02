@@ -29,7 +29,7 @@ To run this project in eclipse lombok.jar needs to be added in eclipse.ini file 
 2. Time stamp is in Milliseconds.
 3. Once processing is finished files from the input folder are deleted & moved to audit folder.
 4. Input folder polling interval is taken as 5sec (Spring scheduler is doing the polling job).
-5. Current spring profile in use is local-sandbox with logging as console Info level, for other profiles (dev, staging, production) logs will be written to /data/logs/xyzbank/application.log (with daily compression and purging after 21 days).
+5. Current spring profile in use is local-sandbox with logging as console Info level, for other profiles (dev, staging, production) logs will be written to /data/logs/xyzbank/application.log (with daily compression and purging will be done after 21 days).
 6. Output for both the CSV and XML files written into separate CSV files (since the output format is not specified).
 7. Fork Join Pool size taken as 4 to process 4 files parallelly.
 
