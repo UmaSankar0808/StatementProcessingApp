@@ -35,9 +35,10 @@ To run this project in eclipse lombok.jar needs to be added in eclipse.ini file 
 
 ## How to see the Output:
 1. Input files are already kept under the xyzbank/input folder with the above specified naming convention (e.g., records_1554098803818.csv & records_1554098803819.xml)
-2. Processed files will be available in xyzbank/processed folder in CSV format with the same filename and time stamp.
-3. Error records are separately moved to xyzbank/error folder.
-4. A copy of all the input files are kept under xyzbank/audit folder.
+2. All the fields in the input file are validated.
+3. Processed files will be available in xyzbank/processed folder in CSV format with the same filename and time stamp.
+4. Error records are separately moved to xyzbank/error folder.
+5. A copy of all the input files are kept under xyzbank/audit folder.
 
 ## Package and run application
 ```
