@@ -42,6 +42,9 @@ public class XyzBankFullApplicationTest {
 		Files.createDirectories(inputPath);
 		Files.createDirectories(auditPath);
 		Files.createDirectories(processedPath);
+		FileUtils.cleanDirectory(errorPath.toFile());
+		FileUtils.cleanDirectory(auditPath.toFile());
+		FileUtils.cleanDirectory(processedPath.toFile());
 	}
 	
 	@Test

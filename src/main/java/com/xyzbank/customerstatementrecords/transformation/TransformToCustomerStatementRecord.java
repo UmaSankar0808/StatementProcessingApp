@@ -28,7 +28,7 @@ public class TransformToCustomerStatementRecord {
 
 	static {
 		try {
-			jaxbInstance = JAXBContext.newInstance("com.xyzbank.customerstatementrecords.model");
+			jaxbInstance = JAXBContext.newInstance(CustomerStatementRecords.class);
 		} catch (JAXBException exp) {
 			log.error(exp.getMessage(), exp);
 		}

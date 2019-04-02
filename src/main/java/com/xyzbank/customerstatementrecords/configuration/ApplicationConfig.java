@@ -13,10 +13,8 @@ import lombok.Setter;
 public class ApplicationConfig {
 
 	private Integer pollingInterval;
-	private Integer inputCoolingOffPeriod;
 	private String inputFolderPath;
 	private String errorFolderPath;
 	private String processedFolderPath;
 	private String auditFolderPath;
-	private Long prugeFilesPeriodInMillis;
 }

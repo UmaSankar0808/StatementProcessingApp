@@ -19,6 +19,7 @@
 		<opencsv.version>4.5</opencsv.version>
 		<logback.owsap.version>1.1.6</logback.owsap.version>
 		<junit.jupiter.version>5.4.0</junit.jupiter.version>
+		<jacoco.version>0.8.3</jacoco.version>
 	</properties>
 
 	<dependencies>
@@ -99,6 +100,33 @@
 						</configuration>
 						<goals>
 							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>
