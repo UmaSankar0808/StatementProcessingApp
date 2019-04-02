@@ -28,7 +28,7 @@ public class TransformToCustomerStatementRecord {
 
 	static {
 		try {
-			jaxbInstance = JAXBContext.newInstance(CustomerStatementRecords.class);
+			jaxbInstance = JAXBContext.newInstance("com.xyzbank.customerstatementrecords.model");
 		} catch (JAXBException exp) {
 			log.error(exp.getMessage(), exp);
 		}
@@ -46,7 +46,12 @@ public class TransformToCustomerStatementRecord {
 		}
 	}
 
-	//Convert the CSV file into CustomerStatementRecord objects
+	/**
+	 * Convert the CSV file into CustomerStatementRecord objects
+	 * 
+	 * @param  Absolute path of the file
+	 * @return CustomerStatementRecord objects
+	 */
 	public List<CustomerStatementRecord> tranformCsvToCustomerStatementRecord(final Path path) {
 		log.info("Transforming file {} to CustomerStatementRecords java pojo", path);
 		String fileContents;
@@ -64,7 +69,12 @@ public class TransformToCustomerStatementRecord {
 					.withType(CustomerStatementRecord.class).build().parse();
 	}
 
-	//Unmarshall the XML file and return the CustomerStatementRecord objects.
+	/**
+	 * Unmarshall the XML file and return the CustomerStatementRecord objects.
+	 * 
+	 * @param paAbsolute path of the fileth
+	 * @return CustomerStatementRecord objects
+	 */
 	public List<CustomerStatementRecord> tranformXmlToCustomerStatementRecord(final Path path) {
 		try {
 			log.info("Transforming file {} to CustomerStatementRecords java pojo", path);

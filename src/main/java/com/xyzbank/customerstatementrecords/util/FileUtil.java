@@ -33,7 +33,13 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
 
-	//Gives the time stamp of the file
+	
+	/**
+	 * Extracts the timestamp of the file from the filename.
+	 * 
+	 * @param path - Absolute path of the file
+	 * @return the extracted timestamp from filename
+	*/
 	public static String extractFileIdentifier(final Path path) {
 		String fileName = path.getFileName().toString();
 		if (!fileName.startsWith(RABOBANK_FILE_PREFIX)) {
@@ -43,7 +49,12 @@ public final class FileUtil {
 			fileName.length() - FILE_EXTENSION_LENGTH);
 	}
 
-	//Returns list of files in the input folder
+	/**
+	 * Returns list of files in the input folder
+	 * 
+	 * @param inputFolder
+	 * @return Returns list of files
+	 */
 	public static List<Path> listStatementRecordFiles(final String inputFolder) {
 		try (Stream<Path> files = Files.list(Paths.get(inputFolder))) {
 			return files.filter(path -> path.toFile().isFile())
@@ -58,7 +69,14 @@ public final class FileUtil {
 		return new ArrayList<>();
 	}
 
-	// Writes file to the respective folders
+	/**
+	 * Writes file to the respective folders
+	 * 
+	 * @param records
+	 * @param folderPath to write the files
+	 * @param fileName to write
+	 * @param errorRecords (true/false)
+	 */
 	public static void writeRecordsToFile(final List<CustomerStatementRecord> records,
 			final String folderPath, final String fileName, final boolean errorRecords) {
 		if (records != null && !records.isEmpty()) {
