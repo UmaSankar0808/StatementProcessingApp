@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import com.xyzbank.customerstatementrecords.configuration.ApplicationConfig;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecord;
+import com.xyzbank.customerstatementrecords.service.InputFieldsValidationService;
 
 class InputFieldsValidationServiceTest {
 

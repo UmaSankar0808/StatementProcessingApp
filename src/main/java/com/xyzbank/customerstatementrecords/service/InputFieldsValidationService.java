@@ -1,4 +1,4 @@
-package com.xyzbank.customerstatementrecords.transformation;
+package com.xyzbank.customerstatementrecords.service;
 
 import static com.xyzbank.customerstatementrecords.util.Constants.ERROR_PREFIX;
 import static java.util.stream.Collectors.joining;

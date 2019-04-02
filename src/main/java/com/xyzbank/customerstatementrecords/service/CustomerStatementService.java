@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 import com.xyzbank.customerstatementrecords.configuration.ApplicationConfig;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecord;
 import com.xyzbank.customerstatementrecords.model.CustomerStatementRecordWithError;
-import com.xyzbank.customerstatementrecords.transformation.InputFieldsValidationService;
 import com.xyzbank.customerstatementrecords.transformation.TransformToCustomerStatementRecord;
 import com.xyzbank.customerstatementrecords.util.FileUtil;
 import lombok.AllArgsConstructor;
