@@ -1,7 +1,6 @@
 spring:
   main.banner-mode: 'off'
   profiles.active: local-sandbox
-logging.level.org: INFO
 ---
 spring:
   profiles: local-sandbox
@@ -22,7 +21,7 @@ config:
   auditFolderPath: xyzbank/audit
 ---
 spring:
-  profiles: stg
+  profiles: staging
 config:
   pollingInterval: 5000
   inputFolderPath: xyzbank/input
@@ -31,7 +30,7 @@ config:
   auditFolderPath: xyzbank/audit
 ---
 spring:
-  profiles: prod
+  profiles: production
 config:
   pollingInterval: 5000
   inputFolderPath: xyzbank/input
