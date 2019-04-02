@@ -22,5 +22,5 @@ public final class Constants {
 	public static final int COLUMN_THREE = 3;
 	public static final int COLUMN_FOUR = 4;
 	public static final int COLUMN_FIVE = 5;
-	public static final int COLUMN_SIX = 6; 
+	public static final int COLUMN_SIX = 6;
 }

@@ -27,6 +27,9 @@ import lombok.Setter;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerStatementRecord {
 
+	private static final int FRACTION_SIZE = 2;
+	private static final int NUMBER_OF_DIGITS = 6;
+
 	@XmlAttribute
 	@Min(value = 0, message = "reference shouldn't be a negative number")
 	@CsvBindByPosition(position = COLUMN_ZERO)
@@ -38,15 +41,15 @@ public class CustomerStatementRecord {
 	@CsvBindByPosition(position = COLUMN_TWO)
 	private String description;
 
-	@Digits(integer = 6, fraction = 2, message = "startBalance is invalid")
+	@Digits(integer = NUMBER_OF_DIGITS, fraction = FRACTION_SIZE, message = "startBalance is invalid")
 	@CsvBindByPosition(position = COLUMN_THREE)
 	private BigDecimal startBalance;
 
-	@Digits(integer = 6, fraction = 2, message = "mutation is invalid")
+	@Digits(integer = NUMBER_OF_DIGITS, fraction = FRACTION_SIZE, message = "mutation is invalid")
 	@CsvBindByPosition(position = COLUMN_FOUR)
 	private BigDecimal mutation;
 
-	@Digits(integer = 6, fraction = 2, message = "endBalance is invalid")
+	@Digits(integer = NUMBER_OF_DIGITS, fraction = FRACTION_SIZE, message = "endBalance is invalid")
 	@CsvBindByPosition(position = COLUMN_FIVE)
 	private BigDecimal endBalance;
 

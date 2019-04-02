@@ -33,11 +33,10 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
 
-	
 	/**
 	 * Extracts the timestamp of the file from the filename.
-	 * 
-	 * @param path - Absolute path of the file
+	 *
+	 * @param path Absolute path of the file
 	 * @return the extracted timestamp from filename
 	*/
 	public static String extractFileIdentifier(final Path path) {
@@ -51,8 +50,8 @@ public final class FileUtil {
 
 	/**
 	 * Returns list of files in the input folder
-	 * 
-	 * @param inputFolder
+	 *
+	 * @param inputFolder Absolute path of the input folder
 	 * @return Returns list of files
 	 */
 	public static List<Path> listStatementRecordFiles(final String inputFolder) {
@@ -71,8 +70,8 @@ public final class FileUtil {
 
 	/**
 	 * Writes file to the respective folders
-	 * 
-	 * @param records
+	 *
+	 * @param records List of customer statement records
 	 * @param folderPath to write the files
 	 * @param fileName to write
 	 * @param errorRecords (true/false)

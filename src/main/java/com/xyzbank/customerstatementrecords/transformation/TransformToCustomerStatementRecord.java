@@ -48,7 +48,7 @@ public class TransformToCustomerStatementRecord {
 
 	/**
 	 * Convert the CSV file into CustomerStatementRecord objects
-	 * 
+	 *
 	 * @param  Absolute path of the file
 	 * @return CustomerStatementRecord objects
 	 */
@@ -71,7 +71,7 @@ public class TransformToCustomerStatementRecord {
 
 	/**
 	 * Unmarshall the XML file and return the CustomerStatementRecord objects.
-	 * 
+	 *
 	 * @param paAbsolute path of the fileth
 	 * @return CustomerStatementRecord objects
 	 */

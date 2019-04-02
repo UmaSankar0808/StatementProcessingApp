@@ -1,8 +1,13 @@
 package com.xyzbank.customerstatementrecords.model;
 
+import static com.xyzbank.customerstatementrecords.util.Constants.COLUMN_SIX;
+
 import java.lang.reflect.InvocationTargetException;
+
 import org.apache.commons.beanutils.BeanUtils;
+
 import com.opencsv.bean.CsvBindByPosition;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +27,6 @@ public class CustomerStatementRecordWithError extends CustomerStatementRecord {
 		}
 	}
 
-	@CsvBindByPosition(position = 6)
+	@CsvBindByPosition(position = COLUMN_SIX)
 	private String error;
 }
