@@ -30,8 +30,8 @@ public class InputFieldsValidationService {
 
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
-	public void validateCustomerStatementRecords(final List<CustomerStatementRecord> records,
-			final String fileIdentifier) {
+	public List<CustomerStatementRecord> validateCustomerStatementRecords(
+			final List<CustomerStatementRecord> records, final String fileIdentifier) {
 		List<CustomerStatementRecord> validRecords = new ArrayList<>();
 		List<CustomerStatementRecord> invalidRecords = new ArrayList<>();
         records.forEach(record -> {
@@ -51,6 +51,7 @@ public class InputFieldsValidationService {
         });
         FileUtil.writeRecordsToFile(invalidRecords, config.getErrorFolderPath(),
 				ERROR_PREFIX + fileIdentifier, true);
+        return validRecords;
 	}
 
 }

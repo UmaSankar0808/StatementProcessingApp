@@ -57,11 +57,12 @@ public class CustomerStatementService {
 					allRecords.size(), path.getFileName());
 
 			//Validates input data and writes error records to error file
+			List<CustomerStatementRecord> validatedRecords =
 			fieldsValidationService.validateCustomerStatementRecords(allRecords, fileIdentifier);
 
 			//Filter the duplicate records which are having same Transaction Reference number.
 			List<CustomerStatementRecord> unquieTransactionReferenceRecords =
-					filterDuplicateTransactionReferences(allRecords, fileIdentifier);
+			filterDuplicateTransactionReferences(validatedRecords, fileIdentifier);
 			log.info("Unique number of transaction records are {}",
 					unquieTransactionReferenceRecords.size());
 
