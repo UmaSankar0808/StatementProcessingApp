@@ -5,7 +5,7 @@ import static com.xyzbank.customerstatementrecords.util.Constants.COLUMN_HEADERS
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_CSV;
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_XML;
 import static com.xyzbank.customerstatementrecords.util.Constants.FILE_EXTENSION_LENGTH;
-import static com.xyzbank.customerstatementrecords.util.Constants.RABOBANK_FILE_PREFIX;
+import static com.xyzbank.customerstatementrecords.util.Constants.XYZBANK_FILE_PREFIX;
 import static java.util.stream.Collectors.toList;
 
 import java.io.File;
@@ -41,10 +41,10 @@ public final class FileUtil {
 	*/
 	public static String extractFileIdentifier(final Path path) {
 		String fileName = path.getFileName().toString();
-		if (!fileName.startsWith(RABOBANK_FILE_PREFIX)) {
+		if (!fileName.startsWith(XYZBANK_FILE_PREFIX)) {
 			throw new FileProcessingException("Missing file prefix");
 		}
-		return fileName.substring(RABOBANK_FILE_PREFIX.length(),
+		return fileName.substring(XYZBANK_FILE_PREFIX.length(),
 			fileName.length() - FILE_EXTENSION_LENGTH);
 	}
 
@@ -57,7 +57,7 @@ public final class FileUtil {
 	public static List<Path> listStatementRecordFiles(final String inputFolder) {
 		try (Stream<Path> files = Files.list(Paths.get(inputFolder))) {
 			return files.filter(path -> path.toFile().isFile())
-                        .filter(path -> path.getFileName().toString().startsWith(RABOBANK_FILE_PREFIX)
+                        .filter(path -> path.getFileName().toString().startsWith(XYZBANK_FILE_PREFIX)
 					    		&& (path.toString().endsWith(EXTENSION_CSV)
 					    		|| path.toString().endsWith(EXTENSION_XML)))
 					    .sorted()

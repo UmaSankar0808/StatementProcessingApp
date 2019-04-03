@@ -3,7 +3,7 @@ package com.xyzbank.customerstatementrecords.service;
 import static com.xyzbank.customerstatementrecords.util.Constants.ERROR_PREFIX;
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_CSV;
 import static com.xyzbank.customerstatementrecords.util.Constants.EXTENSION_XML;
-import static com.xyzbank.customerstatementrecords.util.Constants.RABOBANK_FILE_PREFIX;
+import static com.xyzbank.customerstatementrecords.util.Constants.XYZBANK_FILE_PREFIX;
 import static java.io.File.separator;
 import static java.util.stream.Collectors.toList;
 import java.io.File;
@@ -72,14 +72,14 @@ public class CustomerStatementService {
 
 			//Write the results in to processed folder
 			FileUtil.writeRecordsToFile(finalRecords, config.getProcessedFolderPath(),
-					RABOBANK_FILE_PREFIX + fileIdentifier, false);
+					XYZBANK_FILE_PREFIX + fileIdentifier, false);
 
 			//Take a back up copy of incoming files into audit folder.
 			try {
                 String fileExtesion = path.getFileName().toString().endsWith(EXTENSION_CSV)
                 		? EXTENSION_CSV : EXTENSION_XML;
 				Files.move(path, new File(config.getAuditFolderPath() + separator
-                      + RABOBANK_FILE_PREFIX + fileIdentifier + fileExtesion).toPath());
+                      + XYZBANK_FILE_PREFIX + fileIdentifier + fileExtesion).toPath());
 			} catch (IOException exp) {
 				log.error(exp.getMessage(), exp);
 			}
