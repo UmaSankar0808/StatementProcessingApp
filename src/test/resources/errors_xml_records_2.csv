@@ -1,4 +1,4 @@
-Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error
+REFERENCE,ACCOUNTNUMBER,DESCRIPTION,START BALANCE,MUTATION,END BALANCE,ERROR
 172833,NL69ABNA0433647324,Tickets for Willem Theuß,66.72,-41.74,24.98,Duplicate transaction reference exists
 172833,NL69ABNA0433647324,Tickets for Willem Theuß,66.72,-41.74,24.98,Duplicate transaction reference exists
 167875,NL93ABNA0585619023,Tickets from Erik de Vries,5429,-939,6368,End balance doesn't match with start balance + mutation
