@@ -27,6 +27,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * FileUtil.java - Provides utility methods for reading and writing the files.
+ *
+ */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
@@ -71,14 +75,14 @@ public final class FileUtil {
 	}
 
 	/**
-	 * Writes file to the respective folders
+	 * Marshal & write StatementRecord(java bean) into csv file
 	 *
 	 * @param records List of customer statement records
 	 * @param folderPath to write the files
 	 * @param fileName to write
 	 * @param errorRecords (true/false)
 	 */
-	public static void writeRecordsToFile(final List<StatementRecord> records,
+	public static void writeToCsvFile(final List<StatementRecord> records,
 			final String folderPath, final String fileName) {
 		if (records != null && !records.isEmpty()) {
             final File outputFile = new File(folderPath + File.separator + fileName + EXTENSION_CSV);

@@ -25,9 +25,9 @@ class InputFileValidationServiceTest {
 	    StatementRecord statementRecord = StatementRecordBuilder.buildStatementRecord();
 	    statementRecord.setReference(-1L);
 	    final List<StatementRecord> invalidRecords = new ArrayList<>();
-		List<StatementRecord> actualResult = fileValidationService.validateStatementRecords(
+		List<StatementRecord> validRecords = fileValidationService.validateStatementRecords(
 				Arrays.asList(statementRecord), invalidRecords);
-		assertTrue(actualResult.isEmpty());
+		assertTrue(validRecords.isEmpty());
 		assertEquals("reference shouldn't be a negative number", invalidRecords.get(0).getError());
 	}
 

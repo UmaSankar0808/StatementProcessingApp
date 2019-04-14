@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Getter;
 
 /**
- * StatementRecords.java - This class maps the XML records to StatementRecord POGO by taking records as the XML root element
+ * StatementRecords.java - This class maps the XML records to StatementRecord Bean by taking records as the XML root element
  *
  */
 @Getter

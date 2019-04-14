@@ -93,7 +93,7 @@ class FileUtilTest {
 	@Test
 	@DisplayName("Should write/marshall the StatementRecords(Java Beans) to a csv file")
 	void testWriteRecordsToFile() throws IOException {
-		FileUtil.writeRecordsToFile(Arrays.asList(StatementRecordBuilder.buildStatementRecord()),
+		FileUtil.writeToCsvFile(Arrays.asList(StatementRecordBuilder.buildStatementRecord()),
 				Paths.get("test/xyzbank/input").toAbsolutePath().toString(), "test");
 		String actualResult = new String(Files.readAllBytes(Paths.get("test/xyzbank/input/").resolve("test.csv")));
 		assertEquals("Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error\n".toUpperCase() + 
@@ -105,7 +105,7 @@ class FileUtilTest {
 	void testWriteRecordsToFileWithError() throws IOException {
 		StatementRecord statementRecordWithError = StatementRecordBuilder.buildStatementRecord();
 		statementRecordWithError.setError("TestError");
-		FileUtil.writeRecordsToFile(Arrays.asList(statementRecordWithError),
+		FileUtil.writeToCsvFile(Arrays.asList(statementRecordWithError),
 				Paths.get("test/xyzbank/input").toAbsolutePath().toString(), "test");
 		String actualResult = new String(Files.readAllBytes(Paths.get("test/xyzbank/input/").resolve("test.csv")));
 		assertEquals("Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error\n".toUpperCase() + 

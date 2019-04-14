@@ -30,6 +30,13 @@ import com.xyzbank.customerstatementprocessor.util.FileUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * CustomerStatementServiceImpl.java - This service class is the 
+ * core business logic implementation class which is responsible 
+ * to get the input files, do the validations, filters the 
+ * duplicate transaction records, performs final balance validation 
+ * and writes the processed records into respective folders.
+ */
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -41,6 +48,10 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 	private StatementBalanceService statementBalanceService;
 	private DuplicateRecordsService duplicateRecordsService;
 
+	/**
+	 * Spring scheduler starting method, responsible for entire file processing job.
+	 * 
+	 */
 	@Scheduled(fixedDelayString = "${config.pollingInterval}")
 	public void processCustomerRecords() {
 		MDC.put("correlationId", UUID.randomUUID().toString());
@@ -53,7 +64,9 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 		//Process each file separately
 		listOfInputFiles.parallelStream().forEach(path -> {
 		    
-            final List<StatementRecord> invalidAndDuplicateRecords = new ArrayList<>();
+            final List<StatementRecord> invalidRecords = new ArrayList<>();
+            final List<StatementRecord> duplicateRecords = new ArrayList<>();
+            final List<StatementRecord> incorrectBalanceRecords = new ArrayList<>();
 		    
 			//Get the the time stamp of each file
 			String fileIdentifier = FileUtil.extractFileIdentifier(path);
@@ -66,30 +79,34 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 
 			//Validates input data and writes error records to error file
 			List<StatementRecord> validatedRecords =
-			fileValidationService.validateStatementRecords(allRecords, invalidAndDuplicateRecords);
+			fileValidationService.validateStatementRecords(allRecords, invalidRecords);
 
 			//Filter the duplicate records which are having same Transaction Reference number.
 			List<StatementRecord> unquieTransactionReferenceRecords =
 			duplicateRecordsService.filterDuplicateTransactionReferences(
-			        validatedRecords, invalidAndDuplicateRecords);
+			        validatedRecords, duplicateRecords);
 			log.info("Unique number of transaction records are {}",
 					unquieTransactionReferenceRecords.size());
 
 			//Validate the statement balance
 			List<StatementRecord> finalRecords =
 			        statementBalanceService.validateBalance(
-			                unquieTransactionReferenceRecords, invalidAndDuplicateRecords);
+			                unquieTransactionReferenceRecords, incorrectBalanceRecords);
 			log.info("Final number of transaction records are {}", finalRecords.size());
 
 			//Write the results in to processed folder
-			FileUtil.writeRecordsToFile(finalRecords, config.getProcessedFolderPath(),
+			FileUtil.writeToCsvFile(finalRecords, config.getProcessedFolderPath(),
 					XYZBANK_FILE_PREFIX + fileIdentifier);
 			
 	        //Write invalidAndDuplicate records into Error file.
-	        FileUtil.writeRecordsToFile(invalidAndDuplicateRecords, config.getErrorFolderPath(),
+			final List<StatementRecord> errorRecords = new ArrayList<>();
+			errorRecords.addAll(invalidRecords);
+			errorRecords.addAll(duplicateRecords);
+			errorRecords.addAll(incorrectBalanceRecords);
+	        FileUtil.writeToCsvFile(errorRecords, config.getErrorFolderPath(),
 	                ERROR_PREFIX + fileIdentifier);
 
-			//Take a back up copy of incoming files into audit folder.
+			//After successful processing move the input file to audit folder
 			try {
                 String fileExtesion = path.getFileName().toString().endsWith(EXTENSION_CSV)
                 		? EXTENSION_CSV : EXTENSION_XML;

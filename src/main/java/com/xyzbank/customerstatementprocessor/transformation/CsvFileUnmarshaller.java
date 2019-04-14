@@ -15,6 +15,10 @@ import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * CsvFileUnmarshaller.java - Provides functionality to support CSV file format.
+ *
+ */
 @Slf4j
 @Component
 public class CsvFileUnmarshaller implements FileUnmarshaller {
@@ -27,7 +31,7 @@ public class CsvFileUnmarshaller implements FileUnmarshaller {
      */
     @Override
     public List<StatementRecord> unmarshall(final Path path) {
-        log.info("Transforming file {} to CustomerStatementRecords java pojo", path);
+        log.info("Transforming file {} to StatementRecord java bean", path);
         String fileContents;
         try {
             fileContents = new String(Files.readAllBytes(path));

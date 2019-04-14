@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 
+@FunctionalInterface
 public interface FileUnmarshaller {
 
     public List<StatementRecord> unmarshall(Path path);

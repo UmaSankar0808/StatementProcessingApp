@@ -9,6 +9,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * JaxbContextUtil.java - Provides Singleton object for JAXBContext
+ *
+ */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JaxbContextUtil {
@@ -23,6 +27,10 @@ public class JaxbContextUtil {
         }
     }
     
+    /**
+     * Gives JAXBContext instance
+     * @return JAXBContext instance
+     */
     public static JAXBContext getInstance() {
         return jaxbInstance;
     }

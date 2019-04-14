@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * StatementRecord.java - POGO class to map each record from the input file.
+ * StatementRecord.java - Bean class to map each record from the input file.
  *
  */
 @Getter

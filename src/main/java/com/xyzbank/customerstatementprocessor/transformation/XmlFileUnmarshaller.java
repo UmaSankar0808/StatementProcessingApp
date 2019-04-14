@@ -14,12 +14,16 @@ import com.xyzbank.customerstatementprocessor.util.JaxbContextUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * XmlFileUnmarshaller.java - Provides functionality to support XML file format.
+ *
+ */
 @Slf4j
 @Component
 public class XmlFileUnmarshaller implements FileUnmarshaller {
 
     /**
-     * Unmarshall the XML file and returns list of StatementRecord objects.
+     * Unmarshal the XML file and returns list of StatementRecord objects.
      *
      * @param Absolute path of the file
      * @return CustomerStatementRecord objects
@@ -27,7 +31,7 @@ public class XmlFileUnmarshaller implements FileUnmarshaller {
     @Override
     public List<StatementRecord> unmarshall(final Path path) {
         try {
-            log.info("Transforming file {} to CustomerStatementRecords java pojo", path);
+            log.info("Transforming file {} to StatementRecords java bean", path);
             return ((StatementRecords) JaxbContextUtil.getInstance().createUnmarshaller()
                     .unmarshal(path.toFile())).getRecord();
         } catch (JAXBException exp) {

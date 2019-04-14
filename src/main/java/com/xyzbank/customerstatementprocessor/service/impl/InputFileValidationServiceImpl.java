@@ -18,13 +18,24 @@ import com.xyzbank.customerstatementprocessor.service.InputFileValidationService
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * InputFileValidationServiceImpl.java - This class is responsible for doing validations on the Bean class StatementRecord.java
+ *
+ */
 @Slf4j
 @Service
 @AllArgsConstructor
 public class InputFileValidationServiceImpl implements InputFileValidationService {
 
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
-
+	
+	/**
+	 * Validates input data and returns list of validated StatementRecord objects.
+	 *
+	 * @param list of StatementRecord objects
+	 * @param list of invalid StatementRecord objects
+	 * @return list of valid StatementRecord objects
+	 */
 	public List<StatementRecord> validateStatementRecords(final List<StatementRecord> records,
 	        final List<StatementRecord> invalidRecords) {
 		List<StatementRecord> validRecords = new ArrayList<>();

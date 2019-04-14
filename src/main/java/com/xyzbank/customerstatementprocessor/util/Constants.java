@@ -3,6 +3,10 @@ package com.xyzbank.customerstatementprocessor.util;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Constants.java - Holds all the constants required across the application.
+ *
+ */
 public final class Constants {
 
 	private Constants() {
@@ -19,12 +23,5 @@ public final class Constants {
 			"Reference,AccountNumber,Description,Start Balance,Mutation,End Balance\n";
 	public static final String COLUMN_HEADERS_WITH_ERROR =
 			"Reference,AccountNumber,Description,Start Balance,Mutation,End Balance,Error\n";
-	public static final int COLUMN_ZERO = 0;
-	public static final int COLUMN_ONE = 1;
-	public static final int COLUMN_TWO = 2;
-	public static final int COLUMN_THREE = 3;
-	public static final int COLUMN_FOUR = 4;
-	public static final int COLUMN_FIVE = 5;
-	public static final int COLUMN_SIX = 6;
-	public static final List<String> VALID_FILE_EXTENSIONS = Arrays.asList(".csv", ".xml");
+	protected static final List<String> VALID_FILE_EXTENSIONS = Arrays.asList(".csv", ".xml");
 }
