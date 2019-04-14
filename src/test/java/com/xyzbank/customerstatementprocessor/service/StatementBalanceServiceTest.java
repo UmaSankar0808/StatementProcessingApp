@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.xyzbank.customerstatementprocessor.model.StatementRecord;
@@ -21,6 +22,7 @@ class StatementBalanceServiceTest {
     private StatementBalanceService statementBalanceService = new StatementBalanceServiceImpl();
 
     @Test
+    @DisplayName("Should validate the end balance on each record")
     void shouldFilterOutRecordWithIncorrectEndBalance() throws IOException {
         StatementRecord record = StatementRecordBuilder.buildStatementRecord();
         record.setEndBalance(new BigDecimal(16.79));

@@ -6,6 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * ApplicationConfig.java - Configuration class to read application properties
+ *
+ */
 @Getter
 @Setter
 @Configuration

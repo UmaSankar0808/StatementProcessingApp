@@ -8,6 +8,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.Getter;
 
+/**
+ * StatementRecords.java - This class maps the XML records to StatementRecord POGO by taking records as the XML root element
+ *
+ */
 @Getter
 @XmlRootElement(name = "records")
 @XmlAccessorType(XmlAccessType.FIELD)

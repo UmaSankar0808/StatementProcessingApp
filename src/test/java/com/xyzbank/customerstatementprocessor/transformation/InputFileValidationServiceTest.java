@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.xyzbank.customerstatementprocessor.model.StatementRecord;
@@ -19,6 +20,7 @@ class InputFileValidationServiceTest {
 	private InputFileValidationService fileValidationService = new InputFileValidationServiceImpl();
 
 	@Test
+	@DisplayName("Should validate customer statement records ")
 	void testValidateCustomerStatementRecords() {
 	    StatementRecord statementRecord = StatementRecordBuilder.buildStatementRecord();
 	    statementRecord.setReference(-1L);
