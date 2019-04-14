@@ -36,4 +36,4 @@ config:
   inputFolderPath: xyzbank/input
   errorFolderPath: xyzbank/error
   processedFolderPath: xyzbank/processed
-  auditFolderPath: xyzbank/audit 
+  auditFolderPath: xyzbank/audit

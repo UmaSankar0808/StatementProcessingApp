@@ -1,5 +1,8 @@
 package com.xyzbank.customerstatementprocessor.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class Constants {
 
 	private Constants() {
@@ -23,4 +26,5 @@ public final class Constants {
 	public static final int COLUMN_FOUR = 4;
 	public static final int COLUMN_FIVE = 5;
 	public static final int COLUMN_SIX = 6;
+	public static final List<String> VALID_FILE_EXTENSIONS = Arrays.asList(".csv", ".xml");
 }

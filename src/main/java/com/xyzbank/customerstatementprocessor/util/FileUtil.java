@@ -1,8 +1,8 @@
 package com.xyzbank.customerstatementprocessor.util;
 
 import static com.xyzbank.customerstatementprocessor.util.Constants.EXTENSION_CSV;
-import static com.xyzbank.customerstatementprocessor.util.Constants.EXTENSION_XML;
 import static com.xyzbank.customerstatementprocessor.util.Constants.FILE_EXTENSION_LENGTH;
+import static com.xyzbank.customerstatementprocessor.util.Constants.VALID_FILE_EXTENSIONS;
 import static com.xyzbank.customerstatementprocessor.util.Constants.XYZBANK_FILE_PREFIX;
 import static java.util.stream.Collectors.toList;
 
@@ -31,6 +31,10 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileUtil {
 
+    public static String getFileExtension(final Path path) {
+        return path.toString().substring(path.toString().lastIndexOf('.')).toLowerCase();
+    }
+    
 	/**
 	 * Extracts the timestamp of the file from the filename.
 	 *
@@ -56,8 +60,8 @@ public final class FileUtil {
 		try (Stream<Path> files = Files.list(Paths.get(inputFolder))) {
 			return files.filter(path -> path.toFile().isFile())
                         .filter(path -> path.getFileName().toString().startsWith(XYZBANK_FILE_PREFIX)
-					    		&& (path.toString().endsWith(EXTENSION_CSV)
-					    		|| path.toString().endsWith(EXTENSION_XML)))
+                             && VALID_FILE_EXTENSIONS.contains(
+                                     getFileExtension(path)))
 					    .sorted()
 				 .collect(toList());
 		} catch (IOException exp) {

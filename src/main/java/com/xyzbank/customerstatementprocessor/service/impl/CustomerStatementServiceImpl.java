@@ -24,7 +24,7 @@ import com.xyzbank.customerstatementprocessor.service.CustomerStatementService;
 import com.xyzbank.customerstatementprocessor.service.DuplicateRecordsService;
 import com.xyzbank.customerstatementprocessor.service.InputFileValidationService;
 import com.xyzbank.customerstatementprocessor.service.StatementBalanceService;
-import com.xyzbank.customerstatementprocessor.transformation.InputFileUnMarshaller;
+import com.xyzbank.customerstatementprocessor.transformation.InputFileUnmarshaller;
 import com.xyzbank.customerstatementprocessor.util.FileUtil;
 
 import lombok.AllArgsConstructor;
@@ -37,7 +37,7 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 
 	private ApplicationConfig config;
 	private InputFileValidationService fileValidationService;
-	private InputFileUnMarshaller transformer;
+	private InputFileUnmarshaller inputFileUnmarshaller;
 	private StatementBalanceService statementBalanceService;
 	private DuplicateRecordsService duplicateRecordsService;
 
@@ -59,7 +59,8 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 			String fileIdentifier = FileUtil.extractFileIdentifier(path);
 
 			//Transform input file records into java objects.
-			List<StatementRecord> allRecords = transformer.tranformInputFileToBean(path);
+			List<StatementRecord> allRecords = inputFileUnmarshaller.getUnmarshaller(FileUtil.getFileExtension(path))
+			                                                        .unmarshall(path);
 			log.info("Number of records are {} in the input file {}",
 					allRecords.size(), path.getFileName());
 
