@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * StatementBalanceServiceImpl.java - This service class is responsible for final balance verification. 
+ * StatementBalanceServiceImpl.java - This service class is responsible for final balance verification.
  *
  */
 @Slf4j

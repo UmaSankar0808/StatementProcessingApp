@@ -10,7 +10,7 @@ import com.xyzbank.customerstatementprocessor.exception.FileProcessingException;
 import lombok.AllArgsConstructor;
 
 /**
- * InputFileUnmarshaller.java - This class helps in extending 
+ * InputFileUnmarshaller.java - This class helps in extending
  * the functionality to JSON or other file formats in future.
  *
  */
@@ -23,7 +23,7 @@ public class InputFileUnmarshaller {
 
     /**
      * Gives the file extension type through switch-case
-     * @param fileExtension
+     * @param fileExtension Extension of the file
      * @return FileUnmarshaller object
      */
     public FileUnmarshaller getUnmarshaller(final String fileExtension) {

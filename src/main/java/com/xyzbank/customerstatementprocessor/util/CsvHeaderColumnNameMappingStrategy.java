@@ -7,15 +7,14 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 
 /**
- * CsvHeaderColumnNameMappingStrategy.java - Extends OpenCSV class 
+ * CsvHeaderColumnNameMappingStrategy.java - Extends OpenCSV class
  * HeaderColumnNameMappingStrategy to override the default mapping strategy
- * 
  */
 public class CsvHeaderColumnNameMappingStrategy<T> extends HeaderColumnNameMappingStrategy<T> {
 
     private static CsvHeaderColumnNameMappingStrategy<StatementRecord> strategy;
 
-    private static final List<String> csvHeaders = Arrays.asList("REFERENCE", "ACCOUNTNUMBER", "DESCRIPTION",
+    private static final List<String> CSV_HEADERS = Arrays.asList("REFERENCE", "ACCOUNTNUMBER", "DESCRIPTION",
             "START BALANCE", "MUTATION", "END BALANCE", "ERROR");
 
 	/**
@@ -26,7 +25,7 @@ public class CsvHeaderColumnNameMappingStrategy<T> extends HeaderColumnNameMappi
 	    if (strategy == null) {
 	        strategy = new CsvHeaderColumnNameMappingStrategy<>();
 	        strategy.setType(StatementRecord.class);
-            strategy.setColumnOrderOnWrite((o1, o2) -> csvHeaders.indexOf(o1) - csvHeaders.indexOf(o2));
+            strategy.setColumnOrderOnWrite((o1, o2) -> CSV_HEADERS.indexOf(o1) - CSV_HEADERS.indexOf(o2));
 	    }
 	    return strategy;
 	}

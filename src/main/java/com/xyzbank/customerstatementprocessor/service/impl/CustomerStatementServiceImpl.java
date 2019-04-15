@@ -31,11 +31,11 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * CustomerStatementServiceImpl.java - This service class is the 
- * core business logic implementation which is responsible for orchestration
- * get the input files, do the validations, filters the 
- * duplicate transaction records, performs final balance validation 
- * and writes the processed records into respective folders.
+ * CustomerStatementServiceImpl.java - This is the core service class
+ * implementing business logic which is responsible for retrieving the
+ * the input files, do the validations, filters the duplicate transaction
+ * records, performs final balance validation and writes the processed records
+ * into respective folders.
  */
 @Slf4j
 @Service
@@ -50,7 +50,6 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 
 	/**
 	 * Spring scheduler starting method, responsible for entire file processing job.
-	 * 
 	 */
 	@Scheduled(fixedDelayString = "${config.pollingInterval}")
 	public void processCustomerRecords() {
@@ -67,9 +66,6 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
             final List<StatementRecord> invalidRecords = new ArrayList<>();
             final List<StatementRecord> duplicateRecords = new ArrayList<>();
             final List<StatementRecord> incorrectBalanceRecords = new ArrayList<>();
-
-			//Get the the time stamp of each file
-			String fileIdentifier = FileUtil.extractFileIdentifier(path);
 
 			//Transform input file records into java objects.
 			List<StatementRecord> allRecords = inputFileUnmarshaller
@@ -94,6 +90,9 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 			        statementBalanceService.validateBalance(
 			                unquieTransactionReferenceRecords, incorrectBalanceRecords);
 			log.info("Final number of transaction records are {}", finalRecords.size());
+
+			//Get the the time stamp of each file
+			String fileIdentifier = FileUtil.extractFileIdentifier(path);
 
 			//Write the results in to processed folder
 			FileUtil.writeToCsvFile(finalRecords, config.getProcessedFolderPath(),

@@ -12,6 +12,6 @@ import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 @FunctionalInterface
 public interface FileUnmarshaller {
 
-    public List<StatementRecord> unmarshall(Path path);
+    List<StatementRecord> unmarshall(Path path);
 
 }
