@@ -9,5 +9,5 @@ import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 public interface FileUnmarshaller {
 
     public List<StatementRecord> unmarshall(Path path);
-    
+
 }

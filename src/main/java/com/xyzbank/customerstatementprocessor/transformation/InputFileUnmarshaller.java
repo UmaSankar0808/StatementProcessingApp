@@ -10,7 +10,8 @@ import com.xyzbank.customerstatementprocessor.exception.FileProcessingException;
 import lombok.AllArgsConstructor;
 
 /**
- * InputFileUnmarshaller.java - This class helps in extending the functionality to JSON or other file formats in future.
+ * InputFileUnmarshaller.java - This class helps in extending 
+ * the functionality to JSON or other file formats in future.
  *
  */
 @Component

@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @AllArgsConstructor
 public class StatementBalanceServiceImpl implements StatementBalanceService {
-    
+
 	/**
 	 * Validate the statement balance.
 	 *

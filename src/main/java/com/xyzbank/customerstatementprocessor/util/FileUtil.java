@@ -38,7 +38,7 @@ public final class FileUtil {
     public static String getFileExtension(final Path path) {
         return path.toString().substring(path.toString().lastIndexOf('.')).toLowerCase();
     }
-    
+
 	/**
 	 * Extracts the timestamp of the file from the filename.
 	 *

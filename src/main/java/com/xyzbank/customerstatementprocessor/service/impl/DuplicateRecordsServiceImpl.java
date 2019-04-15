@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @AllArgsConstructor
 public class DuplicateRecordsServiceImpl implements DuplicateRecordsService {
-    
+
 	/**
 	 * Filter the duplicate records which are having same Transaction Reference number.
 	 *
@@ -55,5 +55,5 @@ public class DuplicateRecordsServiceImpl implements DuplicateRecordsService {
         });
         return uniqueTransactionRecords;
     }
-    
+
 }
