@@ -63,17 +63,17 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 
 		//Process each file separately
 		listOfInputFiles.parallelStream().forEach(path -> {
-		    
+
             final List<StatementRecord> invalidRecords = new ArrayList<>();
             final List<StatementRecord> duplicateRecords = new ArrayList<>();
             final List<StatementRecord> incorrectBalanceRecords = new ArrayList<>();
-		    
+
 			//Get the the time stamp of each file
 			String fileIdentifier = FileUtil.extractFileIdentifier(path);
 
 			//Transform input file records into java objects.
-			List<StatementRecord> allRecords = inputFileUnmarshaller.getUnmarshaller(FileUtil.getFileExtension(path))
-			                                                        .unmarshall(path);
+			List<StatementRecord> allRecords = inputFileUnmarshaller
+					.getUnmarshaller(FileUtil.getFileExtension(path)).unmarshall(path);
 			log.info("Number of records are {} in the input file {}",
 					allRecords.size(), path.getFileName());
 
@@ -97,7 +97,7 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 			//Write the results in to processed folder
 			FileUtil.writeToCsvFile(finalRecords, config.getProcessedFolderPath(),
 					XYZBANK_FILE_PREFIX + fileIdentifier);
-			
+
 	        //Write invalidAndDuplicate records into Error file.
 			final List<StatementRecord> errorRecords = new ArrayList<>();
 			errorRecords.addAll(invalidRecords);

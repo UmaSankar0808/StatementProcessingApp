@@ -12,7 +12,7 @@ import com.xyzbank.customerstatementprocessor.model.StatementRecord;
  * 
  */
 public class CsvHeaderColumnNameMappingStrategy<T> extends HeaderColumnNameMappingStrategy<T> {
- 
+
     private static CsvHeaderColumnNameMappingStrategy<StatementRecord> strategy;
 
     private static final List<String> csvHeaders = Arrays.asList("REFERENCE", "ACCOUNTNUMBER", "DESCRIPTION",

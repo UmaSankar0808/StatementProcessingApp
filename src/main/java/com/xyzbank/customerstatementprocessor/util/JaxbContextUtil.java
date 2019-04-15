@@ -26,7 +26,7 @@ public class JaxbContextUtil {
             log.error(exp.getMessage(), exp);
         }
     }
-    
+
     /**
      * Gives JAXBContext instance
      * @return JAXBContext instance

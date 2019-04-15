@@ -89,10 +89,10 @@ public final class FileUtil {
 			log.info("Writing contents to file {}", outputFile);
 			try (FileWriter writer = new FileWriter(outputFile, true)) {
 				StatefulBeanToCsv<StatementRecord> beanToCsv =
-						new StatefulBeanToCsvBuilder<StatementRecord>(writer)
-						.withMappingStrategy(CsvHeaderColumnNameMappingStrategy.getInstance())
-						.withApplyQuotesToAll(false)
-						.withOrderedResults(true).build();
+					new StatefulBeanToCsvBuilder<StatementRecord>(writer)
+					.withMappingStrategy(CsvHeaderColumnNameMappingStrategy.getInstance())
+					.withApplyQuotesToAll(false)
+					.withOrderedResults(true).build();
 				beanToCsv.write(records);
             } catch (CsvDataTypeMismatchException | CsvRequiredFieldEmptyException | IOException exp) {
 				log.error(exp.getMessage(), exp);

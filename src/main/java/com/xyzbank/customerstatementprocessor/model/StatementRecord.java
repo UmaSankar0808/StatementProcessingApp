@@ -61,7 +61,7 @@ public class StatementRecord {
 	@Digits(integer = NUMBER_OF_DIGITS, fraction = FRACTION_SIZE, message = "endBalance is invalid")
 	@CsvBindByName(column = "End Balance")
 	private BigDecimal endBalance;
-	
+
 	@CsvBindByName(column = "Error")
 	private String error;
 
