@@ -28,8 +28,8 @@ class FileUtilTest {
 	}
 	
 	@Test
-	@DisplayName("Should extract the file identifier from file name ex:- records_123456.csv file identfier is 123456")
-	void testExtractFileIdentifier() throws IOException {
+	@DisplayName("Should extract the file identifier from file name ex:- in records_123456.csv file identfier is 123456")
+	void shouldExtractFileIdentifier() throws IOException {
 		Files.write(Paths.get("test/xyzbank/input").resolve("records_123456.csv"), new String("test").getBytes());
 		String actualResult = FileUtil.extractFileIdentifier(
 				Paths.get("test/xyzbank/input").resolve("records_123456.csv"));
@@ -38,7 +38,7 @@ class FileUtilTest {
 	
 	@Test
 	@DisplayName("Should throw file processing exception when the input file name"
-	        + "doesn't match with format records_(identifier).xml/csv")
+	        + "doesn't match format records_(identifier).xml/csv")
 	void shouldThrowFileProcessingExceptionForIncorrectFileName() throws IOException {
 		Files.write(Paths.get("test/xyzbank/input").resolve("recor_123456.csv"), new String("test").getBytes());
 		assertThrows(FileProcessingException.class, () -> FileUtil.extractFileIdentifier(

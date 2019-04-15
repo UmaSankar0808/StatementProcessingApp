@@ -41,7 +41,7 @@ To run this project in eclipse lombok.jar needs to be added in eclipse.ini file 
 5. A copy of all the input files are kept under xyzbank/audit folder.
 
 ## How to add new input file format
-1. We can add JSON file format(JsonUnmarshaller.java) by implementing FileUnmarshaller.java unmarshall method and adding the JSON file extension (.json) in Switch-Case of InputFileUnmarshaller.java and SupportedFileExtensions.java
+1. We can add JSON file format(JsonUnmarshaller.java) by implementing FileUnmarshaller.java unmarshall method and adding the JSON file extension (.json) in Switch Case of InputFileUnmarshaller.java
 
 ## Package and run application
 ```

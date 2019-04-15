@@ -32,8 +32,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * CustomerStatementServiceImpl.java - This service class is the 
- * core business logic implementation class which is responsible 
- * to get the input files, do the validations, filters the 
+ * core business logic implementation which is responsible for orchestration
+ * get the input files, do the validations, filters the 
  * duplicate transaction records, performs final balance validation 
  * and writes the processed records into respective folders.
  */
@@ -77,11 +77,12 @@ public class CustomerStatementServiceImpl implements CustomerStatementService {
 			log.info("Number of records are {} in the input file {}",
 					allRecords.size(), path.getFileName());
 
-			//Validates input data and writes error records to error file
+			//Validates input data and returns valid records and also set invalidRecords
+			//if there are any field level validation failures
 			List<StatementRecord> validatedRecords =
 			fileValidationService.validateStatementRecords(allRecords, invalidRecords);
 
-			//Filter the duplicate records which are having same Transaction Reference number.
+			//Filter the duplicate records which are having same transaction Reference number.
 			List<StatementRecord> unquieTransactionReferenceRecords =
 			duplicateRecordsService.filterDuplicateTransactionReferences(
 			        validatedRecords, duplicateRecords);

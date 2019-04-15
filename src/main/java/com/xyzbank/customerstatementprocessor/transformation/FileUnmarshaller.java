@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.xyzbank.customerstatementprocessor.model.StatementRecord;
 
+/**
+ * FileUnmarshaller.java - All input file marshallers should implement this class.
+ *
+ */
 @FunctionalInterface
 public interface FileUnmarshaller {
 

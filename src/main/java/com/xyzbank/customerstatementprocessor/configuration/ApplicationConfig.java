@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * ApplicationConfig.java - Configuration class to read application properties
+ * ApplicationConfig.java - Configuration class to read application properties from application.yml
  *
  */
 @Getter

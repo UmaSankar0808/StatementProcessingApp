@@ -19,7 +19,7 @@ public class CsvHeaderColumnNameMappingStrategy<T> extends HeaderColumnNameMappi
             "START BALANCE", "MUTATION", "END BALANCE", "ERROR");
 
 	/**
-	 * Gives the CsvHeaderColumnNameMappingStrategy object
+	 * Returns the CsvHeaderColumnNameMappingStrategy singleton object
 	 * @return CsvHeaderColumnNameMappingStrategy object
 	 */
 	public static final CsvHeaderColumnNameMappingStrategy<StatementRecord> getInstance() {

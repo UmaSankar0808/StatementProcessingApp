@@ -14,8 +14,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * DuplicateRecordsServiceImpl.java - This java class is used to filter out  duplicate records.
- *
+ * DuplicateRecordsServiceImpl.java - This java class is used to filter out  duplicate records
+ * based on transaction reference
+ * 
  */
 @Slf4j
 @Service
@@ -23,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DuplicateRecordsServiceImpl implements DuplicateRecordsService {
 
 	/**
-	 * Filter the duplicate records which are having same Transaction Reference number.
+	 * Filter the duplicate records which are having same transaction reference number.
 	 *
 	 * @param list of StatementRecord objects
 	 * @param list of duplicate StatementRecord objects

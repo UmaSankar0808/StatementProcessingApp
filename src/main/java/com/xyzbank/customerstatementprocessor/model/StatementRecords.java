@@ -9,8 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Getter;
 
 /**
- * StatementRecords.java - This class maps the XML records 
- * to StatementRecord Bean by taking records as the XML root element
+ * StatementRecords.java - Model class to map xml file to java bean
  *
  */
 @Getter

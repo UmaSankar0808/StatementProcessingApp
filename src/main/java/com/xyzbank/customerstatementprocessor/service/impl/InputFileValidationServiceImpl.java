@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * InputFileValidationServiceImpl.java - This class is responsible
- * for doing validations on the Bean class StatementRecord.java
+ * for doing field level validations on the Bean class StatementRecord.java
  *
  */
 @Slf4j
@@ -31,7 +31,7 @@ public class InputFileValidationServiceImpl implements InputFileValidationServic
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
 	/**
-	 * Validates input data and returns list of validated StatementRecord objects.
+	 * Validates input data and returns list of valid StatementRecord objects.
 	 *
 	 * @param list of StatementRecord objects
 	 * @param list of invalid StatementRecord objects

@@ -27,9 +27,9 @@ class CsvFileUnMarshallerTest {
 
     
     @Test
-    @DisplayName("Should throw Exception for a invalid CSV File")
+    @DisplayName("Should throw Exception for a missing CSV File")
     void testThrowExceptionIfInputFileNotFound() {
-        Path filePath = Paths.get("src/test/resources/").resolve("records_file_missing.csv");
+        Path filePath = Paths.get("src/test/resources/").resolve("file_missing.csv");
         assertThrows(FileProcessingException.class,
                 () -> csvFileUnmarshaller.unmarshall(filePath));
     }
